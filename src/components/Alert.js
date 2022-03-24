@@ -1,10 +1,10 @@
 import React from 'react'
 
 function Alert(props) {
-console.log("Alert .js");
+//console.log("Alert .js");
 
     const capitalize = (word)=>{
-        console.log(props.alert.type);
+        //console.log(props.alert.type);
         const lower = word.toLowerCase();
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }
