@@ -5,41 +5,29 @@ import PropTypes from 'prop-types';
 //rfc shortcut 
  function Navbar(props) {
 
-    //console.log("Hi FROM NAVBAR =>"+props.mode);
-
     const colorBlock = (color)=>{
-        // setcolorDiv('display:block');
-    
-        if(color==="blue"){
-            //console.log("Blue ln 11")
-          document.body.style.backgroundColor='blue';
+         if(color==="blue"){
+          props.selectedColor('blue');
         }
         else if(color==='red')
-        {//console.log("RED ln 15")
-          document.body.style.backgroundColor='red';
+        {
+          props.selectedColor('red');
         }
         else if (color==='grey'){
-            //console.log("Green ln 19")
-            document.body.style.backgroundColor='grey';
+            props.selectedColor('grey');
         }
         else if (color==='black'){
-            //console.log("Black ln 23")
-            document.body.style.backgroundColor='black';
+            props.selectedColor('black');
           }
         else if(color==='green'){
-            //console.log("Green ln27"); //console.log("Green ln27")
-            document.body.style.backgroundColor='green';
+            props.selectedColor('green');
         }
         else{
-            //console.log("White ln")
-            document.body.style.backgroundColor='white';
+            props.selectedColor('white');
+            
         }
       }
     
-      //console.log("Hi FROM NAVBAR Last=>"+props.mode);
-      if(true){
-        //console.log("Hi FROM NAVBAR Last TRUE=>"+props.mode);
-      }
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark"> */}
@@ -76,7 +64,7 @@ import PropTypes from 'prop-types';
                         <button type="button" className="btn btn-secondary btn-sm mx-1" onClick={()=>colorBlock('grey')} >Grey</button>
                         <button type="button" className="btn btn-success btn-sm mx-1"  onClick={()=>colorBlock('green')} >Green</button>
                         <button type="button" className="btn btn-dark btn-sm mx-1 btn-outline-secondary" onClick={()=>colorBlock('black')}>Black</button>
-                        <button type="button" className="btn btn-success btn-sm mx-1" style={{display:'none'}} onClick={colorBlock('white')} >none</button>
+                        <button type="button" className="btn btn-success btn-sm mx-1" style={{display:'none'}} onClick={()=>colorBlock('white')} >none</button>
                     </div>
                     
                 </div>

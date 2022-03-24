@@ -20,12 +20,15 @@ function App() {
   const [colorDiv, setcolorDiv] = useState('none');
 
   const colorBlock = (color) => {
-    //console.log("colorBlock ' ");
     setcolorDiv('display:block');
   }
 
+  const selectedColor = (selectedColor)=>{
+    document.body.style.backgroundColor=selectedColor;
+
+  }
+
   const showAlert = (message, type) => {
-    //console.log("showAlert ' ");
     setAlert({
       msg: message,
       type: type
@@ -36,9 +39,7 @@ function App() {
 
   }
   const toggleMode = () => {
-    //console.log("Hi from Toggle Apps colorDiv value=" + colorDiv);
     if (mode === 'light') {
-      //console.log("Toggle mode ='Light' ");
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark mode is enabled", "success");
@@ -48,7 +49,6 @@ function App() {
 
     }
     else {
-      //console.log("Toggle mode ='Dark' ");
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode is enabled", "success");
@@ -59,7 +59,7 @@ function App() {
   return (
     <>
       {/* <Router> */}
-        <Navbar title="TextUtils" aboutText="About Me" mode={mode} toggleMode={toggleMode} colorDiv={colorDiv} />
+        <Navbar title="TextUtils" aboutText="About Me" mode={mode} toggleMode={toggleMode} colorDiv={colorDiv}  selectedColor={selectedColor} />
         <Alert alert={alert} />
         <div className="container my-3">
 
@@ -68,7 +68,7 @@ function App() {
             <Route  path="/about" element={<About/>}></Route>
             <Route  path="/" element={<TextForm heading="Enter the text analyze" mode={mode} showAlert={showAlert} />}>
                */}
-               <TextForm heading="Enter the text analyze" mode={mode} showAlert={showAlert} />
+               <TextForm heading="Enter the text analyze" mode={mode} showAlert={showAlert}  />
             {/* </Route>
           </Routes> */}
 

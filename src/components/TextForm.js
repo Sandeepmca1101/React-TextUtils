@@ -2,25 +2,21 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
     const handleUpClick = () => {
-        console.log("Upper Case Click=>" + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to Upper Case","Success");
     };
     const handlelowClick = () => {
-        // console.log("Lower Case Click=>" + text);
         let newText = text.toLocaleLowerCase();
         setText(newText);
         props.showAlert("Converted to Lower Case","Success");
     };
     const handleClearClick = () => {
-        // console.log("handleClearClick Case Click=>" + text);
         let newText = '';
         setText(newText);
         props.showAlert("Clear","Success");
     };
     const handleOnChange = (event) => {
-        // console.log("handleOnChange");
         setText(event.target.value);
         console.log("text After updation =>" + text);
         
@@ -39,7 +35,6 @@ export default function TextForm(props) {
 
     }
     const [text, setText] = useState("");
-    // setText("ll");
 
     return (
         <>
@@ -50,7 +45,7 @@ export default function TextForm(props) {
                         {" "}
                         <textarea className="form-control" id="mybox" rows="8" onChange={handleOnChange}
                             value={text} placeholder="Enter Text here"
-                            style={{backgroundColor : props.mode==='dark'?'grey':'white' , color : props.mode==='dark'?'white':'black'}}
+                            style={{backgroundColor : props.mode==='dark'?'#c2d6d6':'white' , color : props.mode==='dark'?'white':'black'}}
                         ></textarea>
                     </div>
                     <div className="container margin-top"  >
