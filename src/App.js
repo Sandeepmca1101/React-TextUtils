@@ -18,6 +18,7 @@ function App() {
   const [mode, setMode] = useState('light'); //whether dark mode is enabled or not 
   const [alert, setAlert] = useState(null);
   const [colorDiv, setcolorDiv] = useState('none');
+  const [wordCount, setwordCount] = useState("zero");
 
   const colorBlock = (color) => {
     setcolorDiv('display:block');
@@ -59,7 +60,7 @@ function App() {
   return (
     <>
       {/* <Router> */}
-        <Navbar title="TextUtils" aboutText="About Me" mode={mode} toggleMode={toggleMode} colorDiv={colorDiv}  selectedColor={selectedColor} />
+        <Navbar title="TextUtils" aboutText="About Me" mode={mode} toggleMode={toggleMode} colorDiv={colorDiv}  selectedColor={selectedColor} wordCount={wordCount} />
         <Alert alert={alert} />
         <div className="container my-3">
 
@@ -68,7 +69,7 @@ function App() {
             <Route  path="/about" element={<About/>}></Route>
             <Route  path="/" element={<TextForm heading="Enter the text analyze" mode={mode} showAlert={showAlert} />}>
                */}
-               <TextForm heading="Enter the text analyze" mode={mode} showAlert={showAlert}  />
+               <TextForm heading="Try TextUtils-word counter, character counter,remove extra spaces" mode={mode} showAlert={showAlert}  />
             {/* </Route>
           </Routes> */}
 

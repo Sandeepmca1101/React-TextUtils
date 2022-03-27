@@ -18,9 +18,8 @@ export default function TextForm(props) {
     };
     const handleOnChange = (event) => {
         setText(event.target.value);
-        console.log("text After updation =>" + text);
-        
-    };
+        // console.log("text After updation =>" + text);
+     };
 
     const handleCopyClick  = ()=>{
         var text = document.getElementById("mybox");
@@ -35,6 +34,12 @@ export default function TextForm(props) {
 
     }
     const [text, setText] = useState("");
+    
+     let count =text.replace(/ /g, "").length;
+
+    //  console.log(`Word Count ${count}`);
+     let buttonDisable=count===0?'disabled':"";
+    //  console.log("Button"+buttonDisable);
 
     return (
         <>
@@ -48,23 +53,23 @@ export default function TextForm(props) {
                             style={{backgroundColor : props.mode==='dark'?'#c2d6d6':'white' , color : props.mode==='dark'?'white':'black'}}
                         ></textarea>
                     </div>
-                    <div className="container margin-top"  >
-                        <button className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>To Upper Case </button>
-                        <button className="btn btn-primary mx-1 my-2" onClick={handlelowClick}>To Lower Case</button>
-                        <button className="btn btn-primary mx-1 my-2" onClick={handleClearClick}>Clear</button>
-                        <button className="btn btn-primary mx-1 my-2" onClick={handleCopyClick}>Copy</button>
-                        <button className="btn btn-primary mx-1 my-2" onClick={handleremoveSpaceClick}>Remove Extra Space</button>
+                    <div className="container margin-top">
+                         <button className={`btn btn-primary mx-1 my-2 ${buttonDisable}`} onClick={handleUpClick}>To Upper Case </button>
+                        <button className={`btn btn-primary mx-1 my-2 ${buttonDisable}`} onClick={handlelowClick}>To Lower Case</button>
+                        <button className={`btn btn-primary mx-1 my-2 ${buttonDisable}`} onClick={handleClearClick}>Clear</button>
+                        <button className={`btn btn-primary mx-1 my-2 ${buttonDisable}`}onClick={handleCopyClick}>Copy</button>
+                        <button className={`btn btn-primary mx-1 my-2 ${buttonDisable}`} onClick={handleremoveSpaceClick}>Remove Extra Space</button>
                     </div>
                 </div>
             </div>
             <div className="container my-3" style={{color : props.mode==='dark'?'white':'black'}}>
                 <h3>Your Text Summary </h3>
                 <p>
-                    Words {text.split(" ").length - 1} and Lenth {text.length}
+                    Words {text.split(" ").filter((element)=>{return element.length!==0}).length} and Lenth {text.length}
                 </p>
-                <p>{0.008 * text.split(" ").length} minutes to read</p>
+                <p>{0.008 * text.split(" ").filter(ele=>{return ele.length!=0}).length} minutes to read</p>
                 <h3>Preview </h3>
-                <p>{text.length>1?text:'Enter Something....'}</p>
+                <p>{text.length>1?text:'Nothing to Preview....'}</p>
             </div>
         </>
     );
